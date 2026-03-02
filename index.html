@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier, art en partage</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav-links">
+                <li><a href="#accueil">Atelier</a></li>
+                <li><a href="#oeuvres">Œuvres en partage</a></li>
+                <li><a href="#artiste">L’artiste</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero fade-in">
+        <div class="hero-image-container">
+            <img src="images/cover.jpg" alt="Atelier gallery entrance" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Atelier, art en partage</h1>
+            <p class="hero-text">
+                Ici, les mains bricolent, assemblent, tâtonnent.<br>
+                La peinture respire, le papier se froisse, le béton garde la mémoire du geste.<br>
+                Les œuvres naissent d’un mélange de matières, de couleurs, de nature et de récits anciens.<br>
+                Contes, légendes, folklore du Nord, univers fantastiques…<br>
+                Rien n’est figé. Tout est passage.
+            </p>
+        </div>
+    </section>
+
+    <section id="oeuvres" class="gallery-section section">
+        <h2 class="section-title fade-in">Œuvres en partage</h2>
+        <div id="gallery-container">
+            <!-- Les séries sont générées par script.js -->
+        </div>
+    </section>
+
+    <section id="artiste" class="artist-section section fade-in">
+        <div class="artist-content">
+            <h2 class="section-title">L’artiste</h2>
+            <p class="artist-text">
+                Depuis l’enfance, Kaplou observe.<br>
+                Les détails minuscules, les pétales, les insectes, les objets oubliés.<br>
+                Créer a toujours été une façon d’habiter le monde à distance.
+            </p>
+            <p class="artist-text">
+                Après une période d’épuisement et de repli, la création s’est imposée comme un besoin.
+            </p>
+            <p class="artist-text">
+                Son travail explore la frontière entre présence et absence.<br>
+                Regards, animaux, fragments de corps, matières brutes…<br>
+                La couleur y contrebalance les zones d’ombre.
+            </p>
+            <p class="artist-text">
+                Kaplou n’explique pas. Il propose.<br>
+                Et laisse à chacun la liberté de compléter le récit.
+            </p>
+            <div class="support-container">
+                <a href="https://buy.stripe.com/test" target="_blank" class="btn btn-primary">Soutenir l’artiste</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section section fade-in">
+        <div class="contact-content">
+            <h2 class="section-title">Contact</h2>
+            <p class="contact-text">
+                Une envie, un projet ?<br>
+                Pour toute demande, échange ou rencontre autour d'une œuvre.
+            </p>
+            <a href="https://forms.gle/test" target="_blank" class="btn btn-outline">Nous écrire</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Kaplou. Tous droits réservés.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
