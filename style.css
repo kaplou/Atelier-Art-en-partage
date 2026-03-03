@@ -488,8 +488,12 @@ h1, h2, h3, .serif {
   line-height: 1.6;
   opacity: 0.85;
   margin-top: 8px;
+  letter-spacing: 0.02em;
 }
 
 .oeuvre-info {
   text-align: center;
+}
+.oeuvre-title {
+  margin-bottom: 6px;
 }
