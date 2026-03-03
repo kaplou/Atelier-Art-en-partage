@@ -479,4 +479,6 @@ h1, h2, h3, .serif {
     .hero-title {
         font-size: 2rem;
     }
+}.description-oeuvre {
+  text-align: center;
 }
