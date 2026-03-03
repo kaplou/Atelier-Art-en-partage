@@ -37,7 +37,7 @@ Socle béton brut<br>
     class: "hors-serie",
     intro: "Expériences et formes libres, chaque œuvre ouvre un monde autonome.",
     items: [
-      { title: "L'Instant Suspendu", description: "Collage et pigments", image: "images/cover.jpg" },
+      { title: "La déchéance", description: "Acrylique sur chassis 75x115cm", image: "images/01_La_Decheance_75x115_2025.jpg.jpg" },
       { title: "Murmure de Béton", description: "Sculpture murale", image: "images/cover.jpg" }
     ]
   }
