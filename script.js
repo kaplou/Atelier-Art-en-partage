@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="oeuvre-info">
                     <h3 class="oeuvre-title serif">${item.title}</h3>
-                    <p class="oeuvre-desc">${item.description}</p>
-                    <div class="oeuvre-footer">
+<p style="text-align: center;">${item.description}</p>                   
+
+<div class="oeuvre-footer">
                         <a href="https://buy.stripe.com/exemple" target="_blank" class="btn btn-primary">Acquérir</a>
                     </div>
                 </div>
