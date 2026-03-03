@@ -496,4 +496,8 @@ h1, h2, h3, .serif {
 }
 .oeuvre-title {
   margin-bottom: 6px;
+}.oeuvre-description {
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
 }
