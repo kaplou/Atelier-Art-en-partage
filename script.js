@@ -5,7 +5,7 @@ const galleryData = [
     class: "animal-totem",
     intro: "Humain et animal se rencontrent. Chaque duo devient un totem, fragile ou puissant, révélant émotions, instincts et mémoires enfouies.",
     items: [
-      { title: "Le Gardien du Seuil", description: "Encre et fusain, 50x70cm", image: "images/cover.jpg" },
+      { title: "La panthère et l'or Inca", description: "Acrylique sur papier 300g 50x70cm", image: "images/02_Totem_Panthere_50x70_2026.jpg" },
       { title: "Esprit de la Forêt", description: "Technique mixte, 50x70cm", image: "images/cover.jpg" }
     ]
   },
