@@ -25,7 +25,7 @@ const galleryData = [
     class: "jardin-aquatique",
     intro: "Poissons et créatures glissent entre couleurs et formes.",
     items: [
-      { title: "Reflets de Nacre", description: "Huile sur toile, Paysage", image: "images/cover.jpg" },
+      { title: "Pla-Kat Ciel d'orage", description: "Argile, papier mûrier, acrylique et aquaralles socle béton brut 8x8x48cm", image: "images/Pla_kat_cieldorage8x8x38_2026.jpg" },
       { title: "L'Ondée Bleue", description: "Aquarelle, Paysage", image: "images/cover.jpg" }
     ]
   },
