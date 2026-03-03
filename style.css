@@ -479,12 +479,17 @@ h1, h2, h3, .serif {
     .hero-title {
         font-size: 2rem;
     }
+}
+
+/* ✅ EN DEHORS du media query */
 .oeuvre-description {
   text-align: center;
   font-size: 0.95rem;
   line-height: 1.6;
   opacity: 0.85;
   margin-top: 8px;
-}.oeuvre-info {
+}
+
+.oeuvre-info {
   text-align: center;
 }
