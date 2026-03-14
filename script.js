@@ -7,7 +7,7 @@ const galleryData = [
     items: [
       { title: "La panthère et l'or Inca", description: "Acrylique sur papier 300g 50x70cm", image: "images/02_Totem_Panthere_50x70_2026.jpg" },
       { title: "Le chat noir et la dame en rouge", description: "Acrylique sur papier 300g 50x70cm", image: "images/03_Totem_chat_50x70_2026.jpg" },
-      { title: "Une femme, une hyène : 2 reines", description: "Acrylique sur papier 300g 50x70cm", image: "images/grok_image_cg7y35.jpg" },
+      { title: "Une femme, une hyène : 2 reines", description: "Acrylique sur papier 300g 50x70cm", image: "" }
        ]
   },
   {
