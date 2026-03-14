@@ -44,12 +44,16 @@ Socle béton brut<br>
 },
 {
   id: "portraits",
-  title: "Portraits",
+  title: "Portraits d'après photographie",
   class: "portraits",
-  intro: "À partir de photographies et d’échanges, Kaplou imagine des portraits sensibles inspirés des personnes. Chaque œuvre est une interprétation : couleurs, formes et symboles traduisent une présence, une mémoire, un moment de vie.",
+  intro: "À partir de photographies et d’échanges, Kaplou imagine des portraits sensibles inspirés des personnes.",
   items: [
-    { title: "Portrait mémoire", description: "Portrait d'après photographie", image: "images/portrait1.jpg" },
-    { title: "Présence rouge", description: "Portrait d'après photographie", image: "images/portrait2.jpg" }
+    { 
+      title: "Souvenir d'enfance",
+      description: "Portrait interprété",
+      model: "images/modele1.jpg",
+      portrait: "images/portrait1.jpg"
+    }
   ]
 }
 ];
