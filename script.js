@@ -48,7 +48,7 @@ const galleryData = [
       {
         title: "Célia",
         description: "",
-        model: "images/Célia.jpg",
+        model: "images/celia1.jpg",
         portrait: "images/célia2.jpg"
       }
     ]
