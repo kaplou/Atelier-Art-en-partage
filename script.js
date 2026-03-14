@@ -25,9 +25,7 @@ const galleryData = [
     class: "jardin-aquatique",
     intro: "Poissons et créatures glissent entre couleurs et formes.",
     items: [
-      { title: "Pla-Kat Ciel d'orage", description: `Argile, papier mûrier, acrylique et aquarelles<br>
-Socle béton brut<br>
-8 × 8 × 48 cm`, image: "images/Pla_kat_cieldorage8x8x38_2026.jpg" },
+      { title: "Pla-Kat Ciel d'orage", description: `Argile, papier mûrier, acrylique et aquarelles<br>Socle béton brut<br>8 × 8 × 48 cm`, image: "images/Pla_kat_cieldorage8x8x38_2026.jpg" },
       { title: "L'Ondée Bleue", description: "Aquarelle, Paysage", image: "images/cover.jpg" }
     ]
   },
@@ -49,7 +47,7 @@ Socle béton brut<br>
     items: [
       {
         title: "Célia",
-        description: "Exemple de portrait réalisé",
+        description: "",
         model: "images/Célia.jpg",
         portrait: "images/Célia2.jpg"
       }
@@ -57,79 +55,74 @@ Socle béton brut<br>
   }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-    const galleryContainer = document.getElementById('gallery-container');
-    if (!galleryContainer) return;
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryContainer = document.getElementById("gallery-container");
+  if (!galleryContainer) return;
 
-    galleryData.forEach(series => {
-        const block = document.createElement('div');
-        block.className = `gallery-block ${series.class} fade-in`;
-        block.id = series.id;
+  galleryData.forEach(series => {
+    const block = document.createElement("div");
+    block.className = `gallery-block ${series.class} fade-in`;
+    block.id = series.id;
 
-        const introHTML = series.intro ? `<p class="series-intro">${series.intro}</p>` : '';
+    const introHTML = series.intro ? `<p class="series-intro">${series.intro}</p>` : "";
 
-        const oeuvresHTML = series.items.map(item => {
-            let imageHTML = '';
-            if(series.id === "portraits"){
-                // Hover photo → portrait
-                imageHTML = `
-                <div class="image-hover">
-                    <img src="${item.model}" class="image-model" alt="${item.title}">
-                    <img src="${item.portrait}" class="image-portrait" alt="${item.title}">
-                </div>
-                `;
-            } else {
-                imageHTML = `<img src="${item.image}" alt="${item.title}" class="oeuvre-image" loading="lazy">`;
-            }
-
-            // Footer conditionnel : pas de bouton pour portraits
-            let footerHTML = '';
-            if(series.id !== "portraits"){
-                footerHTML = `
-                    <div class="oeuvre-footer">
-                        <a href="https://buy.stripe.com/exemple" target="_blank" class="btn btn-primary">Acquérir</a>
-                    </div>
-                `;
-            }
-
-            return `
-            <div class="oeuvre-card">
-                <div class="oeuvre-image-container">
-                    ${imageHTML}
-                </div>
-                <div class="oeuvre-info">
-                    <h3 class="oeuvre-title serif">${item.title}</h3>
-                    <p class="oeuvre-description">${item.description}</p>
-                    ${footerHTML}
-                </div>
-            </div>
-            `;
-        }).join('');
-
-        block.innerHTML = `
-            <h2 class="serif">${series.title}</h2>
-            ${introHTML}
-            <div class="oeuvres">
-                ${oeuvresHTML}
-            </div>
+    const oeuvresHTML = series.items.map(item => {
+      let imageHTML = "";
+      if (series.id === "portraits") {
+        imageHTML = `
+          <div class="image-hover">
+            <img src="${item.model}" class="image-model" alt="${item.title}">
+            <img src="${item.portrait}" class="image-portrait" alt="${item.title}">
+          </div>
         `;
+      } else {
+        imageHTML = `<img src="${item.image}" alt="${item.title}" class="oeuvre-image" loading="lazy">`;
+      }
 
-        galleryContainer.appendChild(block);
+      let footerHTML = "";
+      if (series.id !== "portraits") {
+        footerHTML = `
+          <div class="oeuvre-footer">
+            <a href="https://buy.stripe.com/exemple" target="_blank" class="btn btn-primary">Acquérir</a>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="oeuvre-card">
+          <div class="oeuvre-image-container">
+            ${imageHTML}
+          </div>
+          <div class="oeuvre-info">
+            <h3 class="oeuvre-title serif">${item.title}</h3>
+            <p class="oeuvre-description">${item.description}</p>
+            ${footerHTML}
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    block.innerHTML = `
+      <h2 class="serif">${series.title}</h2>
+      ${introHTML}
+      <div class="oeuvres">
+        ${oeuvresHTML}
+      </div>
+    `;
+
+    galleryContainer.appendChild(block);
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("visible");
+        obs.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.1 });
 
-    // Observer fade-in
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                obs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.1 });
+  document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-    // Footer year
-    const yearEl = document.getElementById('year');
-    if(yearEl) yearEl.textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
 });
