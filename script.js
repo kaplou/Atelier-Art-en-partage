@@ -25,9 +25,7 @@ const galleryData = [
     class: "jardin-aquatique",
     intro: "Poissons et créatures glissent entre couleurs et formes.",
     items: [
-      { title: "Pla-Kat Ciel d'orage", description: `Argile, papier mûrier, acrylique et aquarelles<br>
-Socle béton brut<br>
-8 × 8 × 48 cm`, image: "images/Pla_kat_cieldorage8x8x38_2026.jpg" },
+      { title: "Pla-Kat Ciel d'orage", description: `Argile, papier mûrier, acrylique et aquarelles<br>Socle béton brut<br>8 × 8 × 48 cm`, image: "images/Pla_kat_cieldorage8x8x38_2026.jpg" },
       { title: "L'Ondée Bleue", description: "Aquarelle, Paysage", image: "images/cover.jpg" }
     ]
   },
@@ -40,80 +38,88 @@ Socle béton brut<br>
       { title: "La déchéance", description: "Acrylique sur chassis 75x115cm", image: "images/01_La_Decheance_75x115_2025.jpg.jpg" },
       { title: "Murmure de Béton", description: "Sculpture murale", image: "images/cover.jpg" }
     ]
+  },
+  {
+    id: "portraits",
+    title: "Portrait personnalisé",
+    class: "portraits",
+    intro: "À partir de photographies et d’échanges, Kaplou imagine un portrait sensible inspiré de la personne. Il ne s’agit pas d’une reproduction fidèle mais d’une interprétation : couleurs, formes et symboles traduisent une présence, une mémoire, un moment de vie.",
+    items: [
+      {
+        title: "Célia",
+        description: "Portrait interprété d'après photographie",
+        model: "images/Célia.jpg",
+        portrait: "images/célia2.jpg"
+      }
+    ]
   }
-},
-const oeuvresHTML = series.items.map(item => {
-
-let imageHTML = `
-<img src="${item.image}" alt="${item.title}" class="oeuvre-image" loading="lazy">
-`;
-
-if (series.id === "portraits") {
-imageHTML = `
-<div class="image-hover">
-    <img src="${item.model}" class="images/Célia.jpg" alt="${item.title}">
-    <img src="${item.portrait}" class="images/célia2.jpg" alt="${item.title}">
-</div>
-`;
-}
-
-return `
-<div class="oeuvre-card">
-    <div class="oeuvre-image-container">
-        ${imageHTML}
-    </div>
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
-    const galleryContainer = document.getElementById('gallery-container');
-    
-    if (!galleryContainer) return;
 
-    galleryData.forEach(series => {
-        const block = document.createElement('div');
-        block.className = `gallery-block ${series.class} fade-in`;
-        block.id = series.id;
+  const galleryContainer = document.getElementById('gallery-container');
+  if (!galleryContainer) return;
 
-        const introHTML = series.intro ? `<p class="series-intro">${series.intro}</p>` : '';
+  galleryData.forEach(series => {
 
-        const oeuvresHTML = series.items.map(item => `
-            <div class="oeuvre-card">
-                <div class="oeuvre-image-container">
-                    <img src="${item.image}" alt="${item.title}" class="oeuvre-image" loading="lazy">
-                </div>
-                <div class="oeuvre-info">
-                    <h3 class="oeuvre-title serif">${item.title}</h3>
-<p class="oeuvre-description">${item.description}</p>
-<div class="oeuvre-footer">
-                        <a href="https://buy.stripe.com/exemple" target="_blank" class="btn btn-primary">Acquérir</a>
-                    </div>
-                </div>
-            </div>
-        `).join('');
+    const block = document.createElement('div');
+    block.className = `gallery-block ${series.class} fade-in`;
+    block.id = series.id;
 
-        block.innerHTML = `
-            <h2 class="serif">${series.title}</h2>
-            ${introHTML}
-            <div class="oeuvres">
-                ${oeuvresHTML}
-            </div>
+    const introHTML = series.intro ? `<p class="series-intro">${series.intro}</p>` : '';
+
+    const oeuvresHTML = series.items.map(item => {
+
+      let imageHTML = `<img src="${item.image}" alt="${item.title}" class="oeuvre-image" loading="lazy">`;
+
+      if (series.id === "portraits") {
+        imageHTML = `
+          <div class="image-hover">
+            <img src="${item.model}" class="image-model" alt="${item.title}">
+            <img src="${item.portrait}" class="image-portrait" alt="${item.title}">
+          </div>
         `;
+      }
 
-        galleryContainer.appendChild(block);
+      return `
+        <div class="oeuvre-card">
+          <div class="oeuvre-image-container">
+            ${imageHTML}
+          </div>
+          <div class="oeuvre-info">
+            <h3 class="oeuvre-title serif">${item.title}</h3>
+            <p class="oeuvre-description">${item.description}</p>
+            <div class="oeuvre-footer">
+              <a href="https://buy.stripe.com/exemple" target="_blank" class="btn btn-primary">Acquérir</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    block.innerHTML = `
+      <h2 class="serif">${series.title}</h2>
+      ${introHTML}
+      <div class="oeuvres">
+        ${oeuvresHTML}
+      </div>
+    `;
+
+    galleryContainer.appendChild(block);
+
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.1 });
 
-    // Observer fade-in
-    const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                obs.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
 });
