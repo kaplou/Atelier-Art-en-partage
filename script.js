@@ -40,19 +40,20 @@ const galleryData = [
     ]
   },
   {
+{
     id: "portraits",
     title: "Portrait personnalisé",
     class: "portraits",
-    intro: "À partir de photographies et d’échanges, Kaplou imagine un portrait sensible inspiré de la personne. Il ne s’agit pas d’une reproduction fidèle mais d’une interprétation : couleurs, formes et symboles traduisent une présence, une mémoire, un moment de vie.",
+    intro: "À partir de photographies et d’échanges, Kaplou imagine des portraits sensibles inspirés des personnes. Plus qu’un portrait, un souvenir, une émotion, une histoire que l’on peut commander.",
     items: [
-      {
-        title: "Célia",
-        description: "Portrait interprété d'après photographie",
-        model: "images/Célia.jpg",
-        portrait: "images/célia2.jpg"
-      }
+        { 
+            title: "Célia",
+            description: "Portrait interprété",
+            model: "images/Célia.jpg",
+            portrait: "images/célia2.jpg"
+        }
     ]
-  }
+}
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
