@@ -439,7 +439,7 @@ h1, h2, h3, .serif {
 }
 
 .gallery-block.hors-serie .oeuvre-image-container {
-    aspect-ratio: 4/3;
+    aspect-ratio: 5/7; /* Square or landscape could be handled via object-fit */
 }
 /* Texte d'intro des séries centré et élégant */
 .series-intro {
