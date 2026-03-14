@@ -51,7 +51,7 @@ let imageHTML = `
 if (series.id === "portraits") {
 imageHTML = `
 <div class="image-hover">
-    <img src="${item.model}" class="image-model" alt="${item.title}">
+    <img src="${item.model}" class="images/Célia.jpg" alt="${item.title}">
     <img src="${item.portrait}" class="image-portrait" alt="${item.title}">
 </div>
 `;
