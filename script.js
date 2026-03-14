@@ -52,7 +52,7 @@ if (series.id === "portraits") {
 imageHTML = `
 <div class="image-hover">
     <img src="${item.model}" class="images/Célia.jpg" alt="${item.title}">
-    <img src="${item.portrait}" class="image-portrait" alt="${item.title}">
+    <img src="${item.portrait}" class="images/célia2.jpg" alt="${item.title}">
 </div>
 `;
 }
