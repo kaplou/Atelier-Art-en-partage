@@ -42,20 +42,26 @@ Socle béton brut<br>
     ]
   }
 },
-{
-  id: "portraits",
-  title: "Portraits d'après photographie",
-  class: "portraits",
-  intro: "À partir de photographies et d’échanges, Kaplou imagine des portraits sensibles inspirés des personnes.",
-  items: [
-    { 
-      title: "Souvenir d'enfance",
-      description: "Portrait interprété",
-      model: "images/Célia.jpg",
-      portrait: "images/célia2.jpg"
-    }
-  ]
+const oeuvresHTML = series.items.map(item => {
+
+let imageHTML = `
+<img src="${item.image}" alt="${item.title}" class="oeuvre-image" loading="lazy">
+`;
+
+if (series.id === "portraits") {
+imageHTML = `
+<div class="image-hover">
+    <img src="${item.model}" class="image-model" alt="${item.title}">
+    <img src="${item.portrait}" class="image-portrait" alt="${item.title}">
+</div>
+`;
 }
+
+return `
+<div class="oeuvre-card">
+    <div class="oeuvre-image-container">
+        ${imageHTML}
+    </div>
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
