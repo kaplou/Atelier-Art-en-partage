@@ -500,4 +500,7 @@ h1, h2, h3, .serif {
   max-width: 260px;
   margin-left: auto;
   margin-right: auto;
+    
+}.gallery-block.portraits .oeuvre-image-container {
+    aspect-ratio: 4/5;
 }
