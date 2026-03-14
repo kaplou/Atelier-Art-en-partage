@@ -51,7 +51,7 @@ Socle béton brut<br>
     { 
       title: "Souvenir d'enfance",
       description: "Portrait interprété",
-      model: "images/modele1.jpg",
+      model: "images/Célia.jpg",
       portrait: "images/portrait1.jpg"
     }
   ]
