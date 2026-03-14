@@ -41,6 +41,17 @@ Socle béton brut<br>
       { title: "Murmure de Béton", description: "Sculpture murale", image: "images/cover.jpg" }
     ]
   }
+},
+{
+  id: "portraits",
+  title: "Portraits",
+  class: "portraits",
+  intro: "À partir de photographies et d’échanges, Kaplou imagine des portraits sensibles inspirés des personnes. Chaque œuvre est une interprétation : couleurs, formes et symboles traduisent une présence, une mémoire, un moment de vie.",
+  items: [
+    { title: "Portrait mémoire", description: "Portrait d'après photographie", image: "images/portrait1.jpg" },
+    { title: "Présence rouge", description: "Portrait d'après photographie", image: "images/portrait2.jpg" }
+  ]
+}
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
