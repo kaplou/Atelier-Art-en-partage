@@ -1,0 +1,819 @@
+/* Variables & Resets */
+:root {
+    --color-bg: #f9f8f6;
+    --color-text: #2c2c2c;
+    --color-text-light: #5a5a5a;
+    --color-accent-green: #9fb399;
+    --color-accent-orange: #d49a7a;
+    --font-title: 'Lora', serif;
+    --font-text: 'Inter', sans-serif;
+    --font-handwritten: 'Caveat', cursive;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 10%;
+    width: 40vw;
+    height: 100vh;
+    background-image: 
+        radial-gradient(at 20% 20%, rgba(212, 154, 122, 0.07) 0%, transparent 50%),
+        radial-gradient(at 80% 40%, rgba(212, 154, 122, 0.05) 0%, transparent 40%),
+        radial-gradient(at 40% 70%, rgba(212, 154, 122, 0.08) 0%, transparent 50%),
+        radial-gradient(at 70% 90%, rgba(212, 154, 122, 0.04) 0%, transparent 40%);
+    filter: blur(80px);
+    z-index: -2;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 15%;
+    width: 25vw;
+    height: 120%;
+    background: linear-gradient(165deg, 
+        transparent 0%, 
+        rgba(212, 154, 122, 0.02) 10%, 
+        rgba(212, 154, 122, 0.08) 25%, 
+        rgba(212, 154, 122, 0.03) 45%, 
+        rgba(212, 154, 122, 0.09) 65%, 
+        rgba(212, 154, 122, 0.02) 85%, 
+        transparent 100%
+    );
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 Q 150 250 50 500 T 150 1000' fill='none' stroke='black' stroke-width='80' opacity='0.5'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 Q 150 250 50 500 T 150 1000' fill='none' stroke='black' stroke-width='120' /%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Typography */
+h1, h2, h3, .serif {
+    font-family: var(--font-title);
+    font-weight: 400;
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header & Nav */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: rgba(249, 248, 246, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--color-accent-orange);
+}
+
+/* Sections */
+.section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+/* =====================
+   Bloc 1 : Hero
+   ===================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 var(--spacing-md);
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(249, 248, 246, 0.2), rgba(249, 248, 246, 0.85) 90%);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin-top: var(--spacing-lg);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text);
+}
+
+/* Citation manuscrite hero */
+.hero-citation {
+    font-family: var(--font-handwritten);
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.5;
+    text-shadow: 1px 2px 6px rgba(0,0,0,0.10);
+    margin-top: var(--spacing-md);
+    display: inline-block;
+}
+
+/* =====================
+   Bloc 2 : Intro œuvres
+   ===================== */
+.bloc-intro {
+    text-align: center;
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+}
+
+.bloc-intro-text {
+    font-size: 1.15rem;
+    color: var(--color-text-light);
+    line-height: 1.9;
+    font-family: var(--font-title);
+    font-style: italic;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+/* =====================
+   Gallery / Peintures / Sculptures
+   ===================== */
+.gallery-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-block {
+    margin-bottom: var(--spacing-xl);
+}
+
+.gallery-block h2 {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: var(--spacing-sm);
+}
+
+.series-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-md);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.oeuvres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    justify-content: flex-start;
+}
+
+.oeuvre-card {
+    flex: 1 1 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+}
+
+.oeuvre-card:hover {
+    transform: translateY(-5px);
+}
+
+.oeuvre-image-container {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: var(--spacing-sm);
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.oeuvre-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.oeuvre-card:hover .oeuvre-image {
+    transform: scale(1.03);
+}
+
+/* Ratios par série */
+.gallery-block.animal-totem .oeuvre-image-container {
+    aspect-ratio: 5/7;
+}
+
+.gallery-block.hors-serie .oeuvre-image-container {
+    aspect-ratio: 5/7;
+}
+
+.gallery-block.jardin-meduse .oeuvre-image-container,
+.gallery-block.jardin-aquatique .oeuvre-image-container {
+    aspect-ratio: 1/1;
+}
+
+.gallery-block.portraits .oeuvre-image-container {
+    aspect-ratio: 4/5;
+}
+
+.oeuvre-info {
+    padding: var(--spacing-xs) 0;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.oeuvre-title {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+}
+
+.oeuvre-description {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+}
+
+.oeuvre-footer {
+    margin-top: auto;
+    padding-top: var(--spacing-sm);
+}
+
+.oeuvre-footer .btn {
+    width: 100%;
+    text-align: center;
+}
+
+/* Portrait hover effect */
+.image-hover {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.image-hover img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.6s ease;
+}
+
+.image-model {
+    opacity: 1;
+}
+
+.image-portrait {
+    opacity: 0;
+}
+
+.image-hover:hover .image-model,
+.image-hover:active .image-model {
+    opacity: 0;
+}
+
+.image-hover:hover .image-portrait,
+.image-hover:active .image-portrait {
+    opacity: 1;
+}
+
+/* =====================
+   Bloc 4 : L'artiste
+   ===================== */
+.artist-section {
+}
+
+.artist-content {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+/* Photo flottante */
+.artist-photo-frame {
+    float: right;
+    margin: 0 0 var(--spacing-md) var(--spacing-lg);
+    width: 280px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+.artist-photo {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+}
+
+.artist-body {
+    overflow: hidden;
+}
+
+.artist-text {
+    font-size: 1.05rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-light);
+    line-height: 1.8;
+}
+
+/* Citation manuscrite artiste */
+.artist-citation {
+    font-family: var(--font-handwritten);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.55;
+    text-shadow: 1px 2px 5px rgba(0,0,0,0.08);
+    border: none;
+    padding: 0;
+    margin: var(--spacing-lg) 0;
+    display: block;
+}
+
+.artist-citation--alone {
+    text-align: center;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+    clear: both;
+}
+
+/* Signature Kaplou */
+.artist-signature-img {
+    display: block;
+    width: 200px;
+    margin-left: auto;
+    margin-top: var(--spacing-md);
+    opacity: 0.85;
+    mix-blend-mode: multiply;
+}
+
+.support-container {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    clear: both;
+}
+
+/* =====================
+   Bloc 5 : Sculptures intro
+   ===================== */
+.sculptures-intro {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto var(--spacing-lg);
+    font-family: var(--font-title);
+    font-style: italic;
+}
+
+.sculptures-intro p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    line-height: 2;
+}
+
+/* =====================
+   Bloc 6 : Portraits intro
+   ===================== */
+.portraits-intro {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+}
+
+/* =====================
+   Bloc 7 : Contact
+   ===================== */
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+    padding: var(--spacing-lg);
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.contact-text {
+    margin-bottom: var(--spacing-lg);
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-green);
+    color: #fff;
+    border: 1px solid var(--color-accent-green);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-accent-green);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-text);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-text);
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: var(--spacing-md);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+/* =====================
+   Responsive
+   ===================== */
+@media (max-width: 1024px) {
+    .oeuvre-card {
+        flex: 1 1 calc(50% - var(--spacing-lg));
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: var(--spacing-sm);
+        font-size: 0.8rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-citation {
+        font-size: 1.35rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .oeuvre-card {
+        flex: 1 1 100%;
+        max-width: none;
+    }
+
+    .artist-photo-frame {
+        float: none;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto var(--spacing-md);
+        display: block;
+    }
+
+    .artist-citation {
+        font-size: 1.3rem;
+    }
+
+    .artist-citation--alone {
+        font-size: 1.25rem;
+    }
+
+    .series-intro,
+    .artist-text,
+    .bloc-intro-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        padding: 0 var(--spacing-sm);
+    }
+
+    .gallery-block h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4rem 0.8rem;
+    }
+
+    .header {
+        padding: 0.5rem;
+    }
+
+    .hero {
+        padding-top: 4rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-citation {
+        font-size: 1.2rem;
+    }
+
+    .gallery-block h2 {
+        font-size: 1.5rem;
+    }
+
+    .artist-citation {
+        font-size: 1.15rem;
+    }
+}
+
+/* =====================
+   Poetic Quote – Fragment de papier
+   ===================== */
+.poetic-quote {
+    position: relative;
+    background-color: rgba(159, 179, 153, 0.14);
+    border-radius: 3px 10px 7px 5px / 7px 4px 9px 3px;
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.07),
+        0 1px 3px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    padding: 1.2rem 1.8rem;
+    opacity: 0;
+    transform: translateY(14px) rotate(-0.4deg);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    transition-delay: var(--pq-delay, 0s);
+}
+
+.poetic-quote::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.35) 0%,
+        transparent 55%
+    );
+    pointer-events: none;
+}
+
+.poetic-quote.pq-visible {
+    opacity: 1;
+    transform: rotate(-0.4deg);
+}
+
+@media (max-width: 768px) {
+    .poetic-quote {
+        padding: 1rem 1.2rem;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   Narrative overlay feature
+   ───────────────────────────────────────────── */
+
+/* Discreet secondary button under each artwork */
+.btn-narrative {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-handwritten);
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-narrative::before {
+    content: "— ";
+    opacity: 0.5;
+}
+
+.btn-narrative:hover {
+    opacity: 1;
+    color: var(--color-text);
+}
+
+/* Fullscreen overlay – hidden by default */
+#narrative-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+#narrative-overlay.is-visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Artwork image fills the background */
+.narrative-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1.03);
+    transition: transform 0.6s ease;
+}
+
+#narrative-overlay.is-visible .narrative-bg {
+    transform: scale(1);
+}
+
+/* Dark veil over the image */
+.narrative-veil {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.65);
+}
+
+/* Close button */
+.narrative-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.25s ease;
+    z-index: 2;
+}
+
+.narrative-close:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Centered text body */
+.narrative-body {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+/* Story text lines */
+.narrative-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    font-family: var(--font-handwritten);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+}
+
+.narrative-text span {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .narrative-body {
+        padding: 1.5rem;
+    }
+
+    .narrative-close {
+        top: 1rem;
+        right: 1.2rem;
+    }
+}
