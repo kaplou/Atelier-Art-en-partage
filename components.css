@@ -26,11 +26,9 @@
 .pla-kat figure{background:transparent;padding:0}
 .work-card figure img[src*="la-decheance"]{filter:brightness(1.07)}
 .work-card:hover figure img[src*="la-decheance"]{filter:brightness(1.07) saturate(1.02) contrast(1.01)}
-.autoportrait-crop>figure img,.autoportrait-crop:hover>figure img{filter:saturate(.91) brightness(.99)}
-.diptych-images .cygne-blanc,.diptych-images figure:hover .cygne-blanc{filter:brightness(.86) contrast(1.1) saturate(.94);transform:none}
-.diptych-images .cygne-noir,.diptych-images figure:hover .cygne-noir{filter:brightness(.97) contrast(1.03) saturate(.94);transform:none}
-.sculpture-images .elan-full,.work:hover .sculpture-images .elan-full{filter:saturate(.88) brightness(.96) contrast(1.03);transform:none}
-.sculpture-images .elan-detail,.work:hover .sculpture-images .elan-detail{filter:saturate(.86) brightness(.94) contrast(1.04);transform:none}
+.autoportrait-crop>figure img,.autoportrait-crop:hover>figure img{filter:none}
+.diptych-images .cygne-blanc,.diptych-images figure:hover .cygne-blanc,.diptych-images .cygne-noir,.diptych-images figure:hover .cygne-noir{filter:none;transform:none}
+.sculpture-images .elan-full,.work:hover .sculpture-images .elan-full,.sculpture-images .elan-detail,.work:hover .sculpture-images .elan-detail{filter:none;transform:none}
 @media(max-width:620px){.sculpture-images{grid-template-columns:1fr}.sculpture-images figure:last-child{margin:0!important}}
 .narrative-content{position:relative;z-index:2;width:min(680px,90vw);text-align:center}
 .narrative-kicker{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#d8c0b1}
