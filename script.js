@@ -26,6 +26,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     overlayTitle.textContent=trigger.dataset.title;
     overlayStory.textContent=trigger.dataset.story;
     overlayBackground.style.backgroundImage=`url("${trigger.dataset.image}")`;
+    const detailPositions={
+      'images/portfolio/la-decheance.webp':'center 38%',
+      'images/portfolio/totem-panthere.webp':'58% 34%',
+      'images/portfolio/totem-chat.webp':'center 32%',
+      'images/portfolio/pla-kat.webp':'center 22%'
+    };
+    overlayBackground.style.backgroundPosition=detailPositions[trigger.dataset.image]||'center';
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden','false');
     document.body.style.overflow='hidden';
