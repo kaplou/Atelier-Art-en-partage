@@ -13,6 +13,11 @@
 .work-card{transition:transform .45s ease}
 .work-card:hover{transform:translateY(-7px)}
 .work-card:hover .enter-button,.work:hover .enter-button{color:var(--orange);border-color:var(--orange)}
+.boxer-portrait figure{aspect-ratio:2/3}.boxer-landscape figure{aspect-ratio:1.47/1}
+.boxer-portrait figure img,.boxer-landscape figure img{width:100%;height:100%;max-height:none;object-fit:cover}
+.boxer-portrait figure img{transform:scale(1.105)}.boxer-landscape figure img{transform:scale(1.065)}
+.boxer-portrait:hover figure img{transform:scale(1.13)}.boxer-landscape:hover figure img{transform:scale(1.09)}
+.sculpture-images{display:block}.sculpture-images figure{margin:0!important}.sculpture-images img{width:100%;height:auto!important;max-height:none!important;object-fit:contain!important}
 .narrative-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:30px;color:#fff;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
 .narrative-overlay.open{opacity:1;visibility:visible}
 .narrative-background{position:absolute;inset:-25px;background:center/cover no-repeat;filter:blur(18px) brightness(.35);transform:scale(1.08)}
@@ -23,5 +28,5 @@
 .narrative-story{white-space:pre-line;font:italic 400 clamp(1.15rem,2.4vw,1.7rem)/1.75 var(--serif)}
 .narrative-close{position:absolute;z-index:3;top:22px;right:30px;width:48px;height:48px;background:transparent;border:1px solid rgba(255,255,255,.55);border-radius:50%;color:#fff;cursor:pointer;font-size:1.8rem;line-height:1}
 @media(max-width:900px){.artist-layout{grid-template-columns:1fr}.artist-photo{position:static;max-width:520px}}
-@media(hover:none){.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img{transform:none;filter:none}.work-card:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){.work figure img,.work-card figure img,.diptych-images figure img,.work-card{transition:none}.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img,.work-card:hover{transform:none;filter:none}}
+@media(hover:none){.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img{filter:none}.work-card:hover{transform:none}.boxer-portrait figure img,.boxer-portrait:hover figure img{transform:scale(1.105)}.boxer-landscape figure img,.boxer-landscape:hover figure img{transform:scale(1.065)}}
+@media(prefers-reduced-motion:reduce){.work figure img,.work-card figure img,.diptych-images figure img,.work-card{transition:none}.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img,.work-card:hover{filter:none}.boxer-portrait figure img,.boxer-portrait:hover figure img{transform:scale(1.105)}.boxer-landscape figure img,.boxer-landscape:hover figure img{transform:scale(1.065)}}
