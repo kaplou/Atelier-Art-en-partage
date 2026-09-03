@@ -7,6 +7,12 @@
 .artist-body blockquote{font:italic 400 clamp(1.45rem,2.8vw,2.4rem)/1.5 var(--serif);color:var(--green-dark);margin:55px 0;padding-left:28px;border-left:2px solid var(--orange)}
 .enter-button{appearance:none;background:none;border:0;border-bottom:1px solid var(--green-dark);color:var(--green-dark);cursor:pointer;font:500 .73rem var(--sans);letter-spacing:.17em;margin-top:24px;padding:8px 0;text-transform:uppercase;transition:color .2s,border-color .2s}
 .enter-button:hover{color:var(--orange);border-color:var(--orange)}
+.work figure,.work-card figure,.diptych-images figure{overflow:hidden}
+.work figure img,.work-card figure img,.diptych-images figure img{transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .65s ease}
+.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img{transform:scale(1.025);filter:saturate(1.04) contrast(1.015)}
+.work-card{transition:transform .45s ease}
+.work-card:hover{transform:translateY(-7px)}
+.work-card:hover .enter-button,.work:hover .enter-button{color:var(--orange);border-color:var(--orange)}
 .narrative-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:30px;color:#fff;opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
 .narrative-overlay.open{opacity:1;visibility:visible}
 .narrative-background{position:absolute;inset:-25px;background:center/cover no-repeat;filter:blur(18px) brightness(.35);transform:scale(1.08)}
@@ -17,3 +23,5 @@
 .narrative-story{white-space:pre-line;font:italic 400 clamp(1.15rem,2.4vw,1.7rem)/1.75 var(--serif)}
 .narrative-close{position:absolute;z-index:3;top:22px;right:30px;width:48px;height:48px;background:transparent;border:1px solid rgba(255,255,255,.55);border-radius:50%;color:#fff;cursor:pointer;font-size:1.8rem;line-height:1}
 @media(max-width:900px){.artist-layout{grid-template-columns:1fr}.artist-photo{position:static;max-width:520px}}
+@media(hover:none){.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img{transform:none;filter:none}.work-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.work figure img,.work-card figure img,.diptych-images figure img,.work-card{transition:none}.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img,.work-card:hover{transform:none;filter:none}}
