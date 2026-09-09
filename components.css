@@ -42,3 +42,27 @@
 @media(max-width:900px){.artist-layout{grid-template-columns:1fr}.artist-photo{position:static;max-width:520px}}
 @media(hover:none){.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img{filter:none}.work-card:hover{transform:none}.boxer-portrait figure img,.boxer-portrait:hover figure img{transform:scale(1.105)}.boxer-landscape figure img,.boxer-landscape:hover figure img{transform:scale(1.065)}}
 @media(prefers-reduced-motion:reduce){.work figure img,.work-card figure img,.diptych-images figure img,.work-card{transition:none}.work:hover figure img,.work-card:hover figure img,.diptych-images figure:hover img,.work-card:hover{filter:none}.boxer-portrait figure img,.boxer-portrait:hover figure img{transform:scale(1.105)}.boxer-landscape figure img,.boxer-landscape:hover figure img{transform:scale(1.065)}}
+
+/* Carrousel — L'art sort de l'atelier */
+.sharing-copy{padding-bottom:clamp(30px,4vw,48px)}
+.sharing-carousel{max-width:1240px;margin:0 auto;padding:0 clamp(22px,5vw,70px) clamp(65px,7vw,95px)}
+.sharing-carousel-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.sharing-carousel-bar>p{margin:0;color:#667067;font-size:.72rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase}
+.sharing-carousel-controls{display:flex;gap:9px}
+.sharing-carousel-controls button{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(36,33,29,.35);border-radius:50%;background:transparent;color:#24211d;cursor:pointer;font-size:1.15rem;transition:background .2s,color .2s,border-color .2s}
+.sharing-carousel-controls button:hover,.sharing-carousel-controls button:focus-visible{border-color:var(--orange);background:var(--orange);color:#fff}
+.sharing-track{display:flex;gap:clamp(15px,2vw,24px);overflow-x:auto;overscroll-behavior-inline:contain;scroll-behavior:smooth;scroll-snap-type:x mandatory;scroll-padding-inline:1px;padding:20px 2px 28px;scrollbar-width:none}
+.sharing-track::-webkit-scrollbar{display:none}
+.sharing-card{position:relative;flex:0 0 clamp(250px,27vw,330px);aspect-ratio:4/5;scroll-snap-align:start;overflow:hidden;margin:0;background:#fffdfa;box-shadow:0 12px 28px rgba(55,45,38,.12)}
+.sharing-photo{padding:10px 10px 34px}
+.sharing-photo::before{content:"";position:absolute;z-index:2;width:38%;height:40px;top:-14px;left:31%;background:url("images/portfolio/tape-floral.png") center/contain no-repeat;pointer-events:none}
+.sharing-photo:nth-of-type(even)::before,.sharing-horse::before{background-image:url("images/portfolio/tape-green.png")}
+.sharing-photo img{display:block;width:100%;height:100%;object-fit:contain;background:#fff}
+.sharing-horse img{object-fit:cover;object-position:center 52%}
+.sharing-quote{display:flex;align-items:center;justify-content:center;padding:clamp(28px,4vw,48px);background:#efe8dc url("images/portfolio/paper-note.png") center/100% 100% no-repeat}
+.sharing-quote blockquote{margin:0;border:0;color:#302c27;text-align:center;font:italic 400 clamp(1.1rem,1.7vw,1.35rem)/1.58 var(--serif)}
+.sharing-dots{display:flex;justify-content:center;gap:9px}
+.sharing-dot{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:#bbb1a7;cursor:pointer;transition:width .25s,background .25s}
+.sharing-dot.active{width:25px;border-radius:8px;background:var(--orange)}
+@media(max-width:620px){.sharing-carousel{padding-left:22px;padding-right:0}.sharing-carousel-bar{padding-right:22px}.sharing-carousel-controls button{width:39px;height:39px}.sharing-track{gap:14px;padding-right:22px}.sharing-card{flex-basis:min(78vw,310px)}.sharing-quote{padding:32px}.sharing-quote blockquote{font-size:1.08rem}.sharing-dots{padding-right:22px}}
+@media(prefers-reduced-motion:reduce){.sharing-track{scroll-behavior:auto}}
