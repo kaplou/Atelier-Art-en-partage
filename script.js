@@ -9,6 +9,40 @@ document.addEventListener('DOMContentLoaded',()=>{
   const active=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}),{rootMargin:'-35% 0px -58% 0px'});
   document.querySelectorAll('main section[id]').forEach(section=>active.observe(section));
   document.querySelector('#year').textContent=new Date().getFullYear();
+  const sharingTrack=document.querySelector('.sharing-track');
+  if(sharingTrack){
+    const cards=[...sharingTrack.querySelectorAll('.sharing-card')];
+    const dotsBox=document.querySelector('.sharing-dots');
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let current=0,autoTimer=null,scrollTimer=null,paused=false;
+    const dots=cards.map((card,index)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.className='sharing-dot';
+      dot.setAttribute('aria-label',`Afficher la carte ${index+1}`);
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+    const setCurrent=index=>{current=index;dots.forEach((dot,i)=>dot.classList.toggle('active',i===current))};
+    const goTo=index=>{const target=(index+cards.length)%cards.length;cards[target].scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'nearest',inline:'start'});setCurrent(target)};
+    dots.forEach((dot,index)=>dot.addEventListener('click',()=>goTo(index)));
+    document.querySelector('.sharing-prev').addEventListener('click',()=>goTo(current-1));
+    document.querySelector('.sharing-next').addEventListener('click',()=>goTo(current+1));
+    const startAuto=()=>{if(reducedMotion||paused)return;clearInterval(autoTimer);autoTimer=setInterval(()=>goTo(current+1),5500)};
+    const stopAuto=()=>clearInterval(autoTimer);
+    const pause=()=>{paused=true;stopAuto()};
+    const resume=()=>{paused=false;startAuto()};
+    sharingTrack.addEventListener('scroll',()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{const nearest=cards.reduce((best,card,index)=>Math.abs(card.offsetLeft-sharingTrack.scrollLeft)<best.distance?{index,distance:Math.abs(card.offsetLeft-sharingTrack.scrollLeft)}:best,{index:0,distance:Infinity});setCurrent(nearest.index)},100)},{passive:true});
+    const carousel=document.querySelector('.sharing-carousel');
+    carousel.addEventListener('mouseenter',pause);
+    carousel.addEventListener('mouseleave',resume);
+    carousel.addEventListener('focusin',pause);
+    carousel.addEventListener('focusout',event=>{if(!carousel.contains(event.relatedTarget))resume()});
+    sharingTrack.addEventListener('pointerdown',pause,{passive:true});
+    sharingTrack.addEventListener('pointerup',()=>{paused=false;startAuto()},{passive:true});
+    setCurrent(0);
+    startAuto();
+  }
   const overlay=document.querySelector('.narrative-overlay');
   const overlayTitle=overlay.querySelector('#narrative-title');
   const overlayStory=overlay.querySelector('.narrative-story');
