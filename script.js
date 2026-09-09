@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded',()=>{
   const active=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id))}),{rootMargin:'-35% 0px -58% 0px'});
   document.querySelectorAll('main section[id]').forEach(section=>active.observe(section));
   document.querySelector('#year').textContent=new Date().getFullYear();
+  const bodyQuote=document.querySelector('.chapter-quote-corps');
+  const lakeDiptych=document.querySelector('.diptych');
+  if(bodyQuote&&lakeDiptych)lakeDiptych.before(bodyQuote);
   const sharingTrack=document.querySelector('.sharing-track');
   if(sharingTrack){
     const cards=[...sharingTrack.querySelectorAll('.sharing-card')];
