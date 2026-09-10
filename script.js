@@ -27,7 +27,11 @@ document.addEventListener('DOMContentLoaded',()=>{
       return dot;
     });
     const setCurrent=index=>{current=index;dots.forEach((dot,i)=>dot.classList.toggle('active',i===current))};
-    const goTo=index=>{const target=(index+cards.length)%cards.length;cards[target].scrollIntoView({behavior:reducedMotion?'auto':'smooth',block:'nearest',inline:'start'});setCurrent(target)};
+    const goTo=index=>{
+      const target=(index+cards.length)%cards.length;
+      sharingTrack.scrollTo({left:cards[target].offsetLeft-sharingTrack.offsetLeft,behavior:reducedMotion?'auto':'smooth'});
+      setCurrent(target);
+    };
     dots.forEach((dot,index)=>dot.addEventListener('click',()=>goTo(index)));
     document.querySelector('.sharing-prev').addEventListener('click',()=>goTo(current-1));
     document.querySelector('.sharing-next').addEventListener('click',()=>goTo(current+1));
