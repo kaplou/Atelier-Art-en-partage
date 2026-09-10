@@ -78,6 +78,10 @@
 .chapter-head h2{max-width:880px;margin:0;font:400 clamp(3rem,7vw,6.3rem)/.98 var(--serif);letter-spacing:-.045em}
 .chapter-quote{max-width:840px;margin:clamp(10px,4vw,55px) 0 clamp(120px,16vw,210px) auto;padding-left:clamp(22px,4vw,42px);border-left:2px solid var(--orange);color:var(--green-dark);font:italic 400 clamp(1.55rem,3.1vw,2.8rem)/1.45 var(--serif);text-wrap:balance}
 .chapter-quote.work-quote{max-width:720px;margin-top:0;margin-bottom:clamp(65px,8vw,105px)}
+.boxer-grid{grid-template-columns:1fr;gap:clamp(90px,12vw,150px)}
+.boxer-grid .boxer-portrait,.boxer-grid .boxer-landscape{display:grid;grid-column:1;grid-row:auto;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:clamp(38px,7vw,95px);align-items:center;margin-top:0}
+.boxer-grid .work-card figure{margin:0}
+.boxer-grid .boxer-landscape{grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr)}
 .works .totem-grid{margin-bottom:clamp(70px,9vw,120px)}
 .artist{background:#eef1ec;border-top:0}
 .artist-journey{display:grid;grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);gap:clamp(45px,9vw,130px);margin-top:clamp(90px,12vw,160px);padding-top:clamp(70px,9vw,115px);border-top:1px solid rgba(41,40,38,.18)}
@@ -92,4 +96,4 @@
 .artist-journey img{width:100%;height:auto}
 .research{background:#faf9f7}
 @media(max-width:900px){.artist-journey{grid-template-columns:1fr}.artist-journey .journey-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.65fr);column-gap:30px}.artist-journey .journey-intro .artist-subtitle,.artist-journey .journey-intro h3{grid-column:1/-1}.artist-journey .journey-intro figure{grid-column:2;grid-row:3/6;margin:0;align-self:start}}
-@media(max-width:620px){.hero-credo{font-size:.92rem;line-height:1.55}.works-intro{margin-bottom:95px}.chapter-head{grid-template-columns:38px 1fr;margin-bottom:60px;padding-top:42px}.chapter-head h2{font-size:clamp(2.65rem,12vw,4rem)}.chapter-quote{margin-bottom:120px;font-size:1.55rem}.artist-journey{margin-top:90px;padding-top:65px}.artist-journey .journey-intro{display:block}.artist-journey .journey-intro figure{margin-top:35px}.artist-journey li{grid-template-columns:76px 1fr;gap:14px}.artist-journey .journey-timeline figure{max-width:100%}}
+@media(max-width:620px){.hero-credo{font-size:.92rem;line-height:1.55}.works-intro{margin-bottom:95px}.chapter-head{grid-template-columns:38px 1fr;margin-bottom:60px;padding-top:42px}.chapter-head h2{font-size:clamp(2.65rem,12vw,4rem)}.chapter-quote{margin-bottom:120px;font-size:1.55rem}.boxer-grid{gap:90px}.boxer-grid .boxer-portrait,.boxer-grid .boxer-landscape{grid-template-columns:1fr;gap:28px}.artist-journey{margin-top:90px;padding-top:65px}.artist-journey .journey-intro{display:block}.artist-journey .journey-intro figure{margin-top:35px}.artist-journey li{grid-template-columns:76px 1fr;gap:14px}.artist-journey .journey-timeline figure{max-width:100%}}
